@@ -20,6 +20,7 @@ RY=$(echo $R | cut -d' ' -f 3)
 SR=$(xrandr --query | grep ' connected' | grep -v "LVDS" | cut -f3 -d' ')
 for RES in $SR
 do
+    ## Place an Icon in the center of the Screen
     # monitor position/offset
     SRX=$(echo $RES | cut -d'x' -f 1)                   # x pos
     SRY=$(echo $RES | cut -d'x' -f 2 | cut -d'+' -f 1)  # y pos
@@ -34,17 +35,12 @@ do
     convert $tmpbg $icon -geometry +$PX+$PY -composite -matte $tmpbg 
 	
 
+    ## Place a message on the screen
 	boX=$((SROX))
 	barWidth=$((SRX))
 	barHeight=$((boY + 30))
 	boY=$((SROY + SRY - 60))
 
-#	convert -fill white -draw "rectangle $boX,$boY $barWidth,$barHeight"  $tmpbg
-#	convert -size $SRXx$SRY -fill white $tmpbg
-#	convert $tmpbg -gravity center\
-#        -font Nimbus-Sans-L -pointsize 26 -fill white\
-#        -annotate +$fontPX+$fontPY "$text" $tmpbg
- 
     convert -size $((barWidth))x60 xc:white -gravity center\
         -font Nimbus-Sans-L -pointsize 26 -fill black\
         -annotate +0,0 "$text" $tmptxt
@@ -53,8 +49,6 @@ do
 	convert $tmpbg $tmptxt -geometry +$boX+$boY -composite $tmpbg
  
 
-#	convert $tmpbg -size $SRXx$SRY canvas:white -geometry +$PX+$PY  -composite $tmpbg
-#	echo +$SR)X+$SR0Y
 done
 
 
