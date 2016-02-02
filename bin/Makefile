@@ -1,2 +1,2 @@
 all:
-	rsync --exclude 'Makefile' * ~/bin
+	rsync -avz --exclude 'Makefile' * ~/bin
