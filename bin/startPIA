@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+sudo openvpn --config /etc/openvpn/US_Silicon_Valley.conf --auth-user-pass /etc/private-internet-access/login.conf
