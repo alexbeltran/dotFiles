@@ -5,7 +5,9 @@ tmptxt="/tmp/screen_txt_$RANDOM.png"
 text="Type password to unlock"
 
 scrot $tmpbg
-convert $tmpbg -scale 10% -scale 1000% -fill black -colorize 25% $tmpbg
+
+# -scale x% -scale(100/x)
+convert $tmpbg -scale 5% -scale 2000% -fill black -colorize 25% $tmpbg
 
 # Put a lock Icon on each display
 # placement x/y
