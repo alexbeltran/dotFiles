@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+echo "Outside of the network!"
+echo "Disabling NIS"
+sudo systemctl stop ypbind
