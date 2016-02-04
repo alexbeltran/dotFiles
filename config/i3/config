@@ -134,6 +134,8 @@ bindsym XF86AudioLowerVolume exec "sh -c 'pactl set-sink-mute 0 false ; pactl se
 ## Toggle Mute
 bindsym XF86AudioMute exec "sh -c 'pactl set-sink-mute 0 toggle'"
 
+# Lock
+bindsym Control+Mod1+l exec "/home/abeltran2/bin/lock"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
