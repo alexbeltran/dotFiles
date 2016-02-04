@@ -29,12 +29,13 @@ wireless _first_ {
 
 ethernet _first_ {
         # if you use %speed, i3status requires root privileges
-        format_up = "&#xf0ec;: %ip (%speed)"
+#        format_up = "&#xf0ec;: %ip (%speed)"
+        format_up = "&#xf0ec;: %ip"
         format_down = "&#xf0ec;: down"
 }
 
 battery 0 {
-        format = "%status %percentage %remaining"
+        format = "%status: %percentage %remaining"
         status_full="&#xf240;"
 }
 
@@ -50,7 +51,7 @@ run_watch VPN {
 }
 
 tztime local {
-        format = "&#xf073; %time"
+        format = "&#xf073;: %time"
         format_time = "%Y-%m-%d %H:%M:%S"
 }
 
@@ -61,3 +62,4 @@ load {
 disk "/" {
         format = "&#xf0a0; %avail"
 }
+
