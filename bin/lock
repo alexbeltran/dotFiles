@@ -3,11 +3,12 @@ icon="$HOME/.xlock/icon.png"
 tmpbg="/tmp/screen_$RANDOM.png"
 tmptxt="/tmp/screen_txt_$RANDOM.png"
 text="Type password to unlock"
+lockParam=""
 
 scrot $tmpbg
 
 # -scale x% -scale(100/x)
-convert $tmpbg -scale 5% -scale 2000% -fill black -colorize 25% $tmpbg
+convert $tmpbg -scale 10% -sample 1000% -fill black -colorize 25% $tmpbg
 
 # Put a lock Icon on each display
 # placement x/y
@@ -31,24 +32,20 @@ do
     PX=$(($SROX + $SRX/2 - $RX/2))
     PY=$(($SROY + $SRY/2 - $RY/2))
 
-    fontPX=$(($SROX + $SRX/2))
-    fontPY=$(($SROY + $SRY/4))
-
-    convert $tmpbg $icon -geometry +$PX+$PY -composite -matte $tmpbg 
 	
-
     ## Place a message on the screen
 	boX=$((SROX))
 	barWidth=$((SRX))
 	barHeight=$((boY + 30))
 	boY=$((SROY + SRY - 60))
 
+
     convert -size $((barWidth))x60 xc:white -gravity center\
         -font Nimbus-Sans-L -pointsize 26 -fill black\
-        -annotate +0,0 "$text" $tmptxt
+        -annotate +0,0 "$text" -alpha set -channel A -evaluate set 50% $tmptxt
 
-	convert $tmptxt -alpha set -channel A -evaluate set 50% $tmptxt
-	convert $tmpbg $tmptxt -geometry +$boX+$boY -composite $tmpbg
+    convert $tmpbg $icon -geometry +$PX+$PY -composite -matte\
+        $tmptxt -geometry +$boX+$boY -composite -matte $tmpbg
  
 
 done
