@@ -138,11 +138,20 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-set $control System Control - [s]hutdown, [r]estart, [l]ock, [e]xit I3, [esc]:
+set $control System Control - [s]hutdown, [r]estart, [h]ibernate, [l]ock, [e]xit I3, [esc]:
 bindsym $mod+Escape mode "$control"
 
 mode "$control" {
-	bindsym e exec i3-msg exit
+    # Shutdown
+    bindsym s exec dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true; mode "default"
+        
+    # Restart
+    bindsym r exec dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true; mode "default"
+
+    # Hibernate
+    bindsym h exec dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Hibernate" boolean:true; mode "default"
+
+    bindsym e exec i3-msg exit
     bindsym l exec lock; mode "default"
     bindsym Escape mode "default"
 }
