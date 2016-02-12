@@ -1,0 +1,9 @@
+#!/bin/bash
+
+playing="$(xwininfo -root -tree | grep "YouTube - Chromium"  | awk -F- '{print $1 "by" $2}' | awk -F\" '{print $2}')"
+
+if [ ${#playing} -ge 1 ]; then
+    echo "$playing"
+else
+    echo "Not Playing"
+fi
