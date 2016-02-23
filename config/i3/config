@@ -48,9 +48,9 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus (vim based)
-bindsym $mod+j focus up 
+bindsym $mod+j focus up
 bindsym $mod+k focus down
-bindsym $mod+l focus left 
+bindsym $mod+l focus left
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
@@ -58,8 +58,8 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 
 # Move workspace
-bindsym $mod+Left move workspace to output left 
-bindsym $mod+Right move workspace to output right 
+bindsym $mod+Left move workspace to output left
+bindsym $mod+Right move workspace to output right
 
 
 # move focused window
@@ -144,7 +144,7 @@ bindsym $mod+Escape mode "$control"
 mode "$control" {
     # Shutdown
     bindsym s exec dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true; mode "default"
-        
+
     # Restart
     bindsym r exec dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Reboot" boolean:true; mode "default"
 
@@ -213,3 +213,7 @@ bar {
 	        urgent_workspace   #aa0000 #990000 #ffffff
         }
 }
+
+## Window Information
+# Matlab Figures
+for_window [class="MATLAB R2015b - academic use" title="Figure *"] floating enable
