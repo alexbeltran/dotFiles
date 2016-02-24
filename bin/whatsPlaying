@@ -1,6 +1,6 @@
 #!/bin/bash
 
-maxTitleLength=20
+maxTitleLength=17
 
 notPlaying="Not Playing"
 google="$(whatsPlayingGoogle)"
@@ -8,7 +8,11 @@ youtube="$(whatsPlayingYouTube)"
 msg=""
 
 if [ "$google" != "$notPlaying" ]; then
-    msg+="&#xf001;:$google"
+    msg+="&#xf1a0; :${google:0:maxTitleLength}"
+
+    if [ ${#google} -ge $maxTitleLength ]; then
+        msg+="..."
+    fi
 fi
 
 if [ "$youtube" != "$notPlaying" ]; then
