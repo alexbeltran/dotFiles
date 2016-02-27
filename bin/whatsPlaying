@@ -8,7 +8,7 @@ youtube="$(whatsPlayingYouTube)"
 msg=""
 
 if [ "$google" != "$notPlaying" ]; then
-    msg+="&#xf1a0; :${google:0:maxTitleLength}"
+    msg+="&#xf1a0;: ${google:0:maxTitleLength}"
 
     if [ ${#google} -ge $maxTitleLength ]; then
         msg+="..."

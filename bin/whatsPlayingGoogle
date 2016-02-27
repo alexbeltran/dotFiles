@@ -1,6 +1,6 @@
 #!/bin/bash
 
-playing="$(xwininfo -root -tree | grep "Google Play Music - Chromium" | awk -F\" '{print $2}' | awk -F- '{print $1 "by" $2}' | grep -v "Google Play Music")"
+playing="$(xwininfo -root -tree | grep "Google Play Music" | awk -F\" '{print $2}' | awk -F- '{print $1 "by" $2}' | grep -v "Google Play Music")"
 
 if [ ${#playing} -ge 1 ]; then
     echo $playing
