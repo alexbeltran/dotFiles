@@ -1,9 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env python3
+# Uses Google Play Desktop Player [Unofficial]'s API for now playing.
 
-playing="$(xwininfo -root -tree | grep "Google Play Music" | awk -F\" '{print $2}' | awk -F- '{print $1 "by" $2}' | grep -v "Google Play Music")"
+import json
+from os.path import expanduser
 
-if [ ${#playing} -ge 1 ]; then
-    echo $playing
-else
-    echo "Not Playing"
-fi
+GPMDP_API = expanduser('~') + '/GPMDP_STORE/playback.json'
+
+def main():
+    with open(GPMDP_API, 'r') as f:
+        data = json.load(f)
+        if data['playing']:
+            print('{title} by {artist}'.format(title=data['song']['title'], artist=data['song']['artist']));
+        else:
+            print('Not Playing')
+
+if __name__ == '__main__':
+    main()
