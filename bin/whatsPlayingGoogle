@@ -4,7 +4,7 @@
 import json
 from os.path import expanduser
 
-GPMDP_API = expanduser('~') + '/GPMDP_STORE/playback.json'
+GPMDP_API = expanduser('~') + '/.config/Google Play Music Desktop Player/json_store/playback.json'
 
 def main():
     with open(GPMDP_API, 'r') as f:
